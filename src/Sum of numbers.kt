@@ -7,9 +7,9 @@ fun main (args : Array<String>){
      * which are the sum of the previous constants
     */
     val numb1: Int = a + b.toInt() + c.toInt()
-    println("The sum of three numbers that are converted to double: $numb1")
+    println("The sum of three numbers that are converted to int: $numb1")
     val numb2: Float = a.toFloat() + b + c.toFloat()
-    println("The sum of three numbers that are converted to double: $numb2")
+    println("The sum of three numbers that are converted to float: $numb2")
     val numb3: Double = a.toDouble() + b.toDouble() + c
     println("The sum of three numbers that are converted to double: $numb3")
 }
