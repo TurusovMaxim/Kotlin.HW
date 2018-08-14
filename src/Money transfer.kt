@@ -7,26 +7,28 @@ fun main(args: Array<String>) {
         println("For the transfer you will need the amount of more than 1 cent, " +
                 "that is 0,6795 rubles")
         print("Please, try again: ")
-        val money = readLine()!!.toDouble()
-        if (money > min){
-           return algorithm(args)
+        val newMoney = readLine()!!.toDouble()
+        if (newMoney > min){
+           return algorithm(money, dollar)
         }
     }
-    return algorithm(args)
+    if (money > min){
+       return algorithm(money, dollar)
+    }
 }
-fun algorithm(args: Array<String>){
-    print("Enter this amount again: ")
-    val money = readLine()!!.toDouble()
-    val dollar = 67.95 //The dollar exchange rate on 08/11/2018 (9:19 PM)
+
+fun algorithm(money: Double, dollar: Double){
     //Money transfer from rubles to dollars
     val transfer = money / dollar
     val formattedDouble = String.format("%.2f%n", transfer)
     print("This is your money in dollars: $formattedDouble")
     //Money transfer from dollars to rubles
-    val retransfer = transfer * dollar
-    val comm = money - money.toInt() //Bank commission
-    val netProfit = retransfer - comm
+    val reTransfer = transfer * dollar
+    val comm = (3 * 100 / money)
+    val netProfit = reTransfer - comm
     val reformattedDouble = String.format("%.2f%n", netProfit)
     print("This is your money in rubles: $reformattedDouble")
-    print("Commission is: $comm")
+    //Commission of the bank (3%)
+    val comFormatted = String.format("%.2f%n", comm)
+    print("Commission is: $comFormatted")
 }
