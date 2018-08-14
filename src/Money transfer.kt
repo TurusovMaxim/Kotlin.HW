@@ -7,8 +7,8 @@ fun main(args: Array<String>) {
         println("For the transfer you will need the amount of more than 1 cent, " +
                 "that is 0,6795 rubles")
         print("Please, try again: ")
-        val newMoney = readLine()!!.toDouble()
-        if (newMoney > min){
+        val money = readLine()!!.toDouble()
+        if (money > min){
            return algorithm(money, dollar)
         }
     }
@@ -24,7 +24,7 @@ fun algorithm(money: Double, dollar: Double){
     print("This is your money in dollars: $formattedDouble")
     //Money transfer from dollars to rubles
     val reTransfer = transfer * dollar
-    val comm = (3 * 100 / money)
+    val comm = (money * 3) / 100
     val netProfit = reTransfer - comm
     val reformattedDouble = String.format("%.2f%n", netProfit)
     print("This is your money in rubles: $reformattedDouble")
