@@ -1,46 +1,47 @@
 fun main(args: Array<String>) {
     println("Hi, to find out the color of the chessboard cell (from 'a' to 'h')")
     print("Enter the letter: ")
-    val letter = readLine().toString()
-    if (letter in "A".."H" || letter in "a".."h") {
-        return checkNumber(letter)
-    }
-    while (letter !in "A".."H" || letter !in "a".."h") {
+    val letter = readLine()!!.toString()
+    val oneLetter = letter.substring(0,1)
+    if (oneLetter in "A".."H" || oneLetter in "a".."h") {
+        return checkNumber(oneLetter)
+        }
+    while (oneLetter !in "A".."H" || oneLetter !in "a".."h") {
         print("Enter the letter " +
                 "that is on the chessboard (from 'a' to 'h'): ")
-        val letter = readLine().toString()
-        if (letter in "A".."H" || letter in "a".."h"){
-            return checkNumber(letter)
+        val oneLetter = readLine()!!.toString()
+        if (oneLetter in "A".."H" || oneLetter in "a".."h"){
+                return checkNumber(oneLetter)
         }
     }
 }
 
-fun checkNumber(letter: String){
+fun checkNumber(oneLetter: String){
     print("Enter a number between 1 and 8: ")
     val number = readLine()!!.toInt()
-    if (number < 9 || number >= 1){
-        return partitionSet(letter, number)
+    if (number <= 8 && number >= 1){
+        return partitionSet(oneLetter, number)
     }
     while (number > 8 || number < 1) {
         println("You must enter a number from a to 8, " +
                 "otherwise nothing will happen")
         print("Try again: ")
         val number = readLine()!!.toInt()
-        if (number < 9 || number >= 1){
-            return partitionSet(letter, number)
+        if (number <= 8 && number >= 1){
+            return partitionSet(oneLetter, number)
         }
     }
 }
 
 //Separation of a set of letters for convenience in calculations
-fun partitionSet(letter: String, number: Int) {
+fun partitionSet(oneLetter: String, number: Int) {
     val myArr = arrayOf("A", "C", "E", "G")
     for (i in myArr.indices){
-        if (myArr[i].equals(letter, ignoreCase = true)) {
+        if (myArr[i].equals(oneLetter, ignoreCase = true)) {
             return forFirstSet(number)
         }
     }
-    if (letter !in myArr){
+    if (oneLetter !in myArr){
         return forSecondSet(number)
     }
 }
