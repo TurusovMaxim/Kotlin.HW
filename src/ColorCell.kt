@@ -19,7 +19,7 @@ fun main(args: Array<String>) {
 fun checkNumber(oneLetter: String){
     print("Enter a number between 1 and 8: ")
     val number = readLine()!!.toInt()
-    if (number <= 8 && number >= 1){
+    if (number in 1..8){
         return partitionSet(oneLetter, number)
     }
     while (number > 8 || number < 1) {
@@ -27,7 +27,7 @@ fun checkNumber(oneLetter: String){
                 "otherwise nothing will happen")
         print("Try again: ")
         val number = readLine()!!.toInt()
-        if (number <= 8 && number >= 1){
+        if (number in 1..8){
             return partitionSet(oneLetter, number)
         }
     }
